@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: php74-a-sql
+    build: ./php
+
+    volumes:
+      - ./php/src:/var/www/html
+    ports:
+      - "80:80"
