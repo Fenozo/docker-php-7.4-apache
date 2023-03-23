@@ -10,7 +10,7 @@ RUN apt update \
 
 # Modules apache
 RUN a2enmod php7.4 
-RUN systemctl restart apache2 
+#RUN systemctl restart apache2 
 
 
 # 2. Install prerequisites (Ubuntu)
