@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git pull
+docker compose up -d
+docker exec -it  php74-a-sql bash
