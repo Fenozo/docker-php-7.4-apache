@@ -5,7 +5,7 @@ RUN apt update \
     && add-apt-repository ppa:ondrej/php -y \
     && apt-get update \
     && apt-get install php7.4 php7.4-dev php7.4-xml -y --allow-unauthenticated \
-    && apt-get install php8.2 -y
+    && apt-get install php8.2 php8.2-xml -y
 
 
 
