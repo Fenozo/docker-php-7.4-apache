@@ -54,7 +54,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt-get update && apt-get install -y zip unzip vim
 
 # Extensions MySQL pour PHP/WordPress
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN apt-get update && apt-get upgrade -y
+RUN docker-php-ext-install pdo pdo_mysql
 
 # Imagick pour WordPress (https://webapplicationconsultant.com/docker/how-to-install-imagick-in-php-docker/)
 RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
