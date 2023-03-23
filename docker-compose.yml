@@ -7,4 +7,4 @@ services:
     volumes:
       - ./php/src:/var/www/html
     ports:
-      - "80:80"
+      - "9003:80"
