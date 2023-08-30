@@ -45,6 +45,10 @@ RUN a2enmod mpm_prefork
 RUN a2enmod php7.4
 # RUN exit
 
+# Override default apache and php config
+COPY php/site.conf  /etc/apache2/sites-available
+COPY php/conf.d/php.ini /etc/php/7.4/apache2/conf.d
+
 # Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -53,14 +57,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Paquets nécessaires à l'installation de WordPress/WordPlate + utiles
 RUN apt-get update && apt-get install -y zip unzip vim
 
-# Extensions MySQL pour PHP/WordPress
-RUN apt-get update && apt-get upgrade -y
-RUN docker-php-ext-install pdo pdo_mysql
 
-# Imagick pour WordPress (https://webapplicationconsultant.com/docker/how-to-install-imagick-in-php-docker/)
-RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
-RUN printf "\n" | pecl install imagick
-RUN docker-php-ext-enable imagick
 
 # Redémarrage de Apache pour tenir compte des modifications + modules installés
 RUN service apache2 restart
