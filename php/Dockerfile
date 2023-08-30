@@ -46,8 +46,8 @@ RUN a2enmod php7.4
 # RUN exit
 
 # Override default apache and php config
-COPY php/site.conf  /etc/apache2/sites-available
-COPY php/conf.d/php.ini /etc/php/7.4/apache2/conf.d
+COPY site.conf  /etc/apache2/sites-available
+COPY conf.d/php.ini /etc/php/7.4/apache2/conf.d
 
 # Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
